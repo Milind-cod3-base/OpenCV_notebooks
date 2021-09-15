@@ -16,8 +16,13 @@ imgDialation = cv2.dilate(imgCanny, kernel,iterations=1)
 #after the kernel I need to define how many iterations the kernel need to move around
 #more number of iterations will result in increase of the widthe of edges, which means the dilation has been iterated many times.
 
+imgEroded = cv2.erode(imgDialation,kernel,iterations=1)
+#this is opposite of dilation, makes the edges thinner
+#here, lets thin the already dilated images.
+
 cv2.imshow('lena baby gray',imgGray)
 cv2.imshow('lena baby gray and blur',imgBlur)
 cv2.imshow('Edge Detection',imgCanny)
 cv2.imshow('Dialation Image', imgDialation)    #broadens the edges and hence dilated.
+cv2.imshow('Eroded Image', imgEroded)
 cv2.waitKey(0)
