@@ -12,6 +12,6 @@ img[200:300,400:500] = 0,255,0
 
 #adding a line in cv2
 
-cv2.line(img,(0,0),(300,300),(0,255,0),3)   #we define the image, then origin and end poing, and then color, and then 3 is the width of the line.
+cv2.line(img,(0,0),(img.shape[0],img.shape[1]),(0,255,0),3)   #here the width comes first and then the height. Hence imagshape[0]
 cv2.imshow("image",img)
 cv2.waitKey(0)
