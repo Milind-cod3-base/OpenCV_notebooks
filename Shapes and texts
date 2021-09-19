@@ -13,5 +13,8 @@ img[200:300,400:500] = 0,255,0
 #adding a line in cv2
 
 cv2.line(img,(0,0),(img.shape[0],img.shape[1]),(0,255,0),3)   #here the width comes first and then the height. Hence imagshape[0]
+
+cv2.rectangle(img,(0,0),(250,350),(0,0,255),3)  #a rectangle, with dimensions given of its diagonal.
+
 cv2.imshow("image",img)
 cv2.waitKey(0)
