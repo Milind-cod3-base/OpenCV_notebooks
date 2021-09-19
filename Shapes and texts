@@ -18,5 +18,6 @@ cv2.rectangle(img,(0,0),(250,350),(0,0,255),cv2.FILLED)  #to fill the colour, pu
 
 cv2.circle(img,(400,50),30,(255,255,0),-1)  #circle created, with centre defined and radius length is given along with color.
 
+cv2.putText(img,"OPEN CV LEARNING",(150,180), cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)   #here we add the text, then origin, thn font, thn scale, then color and later thickness.
 cv2.imshow("image",img)
 cv2.waitKey(0)
