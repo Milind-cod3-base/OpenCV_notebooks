@@ -14,7 +14,9 @@ img[200:300,400:500] = 0,255,0
 
 cv2.line(img,(0,0),(img.shape[0],img.shape[1]),(0,255,0),3)   #here the width comes first and then the height. Hence imagshape[0]
 
-cv2.rectangle(img,(0,0),(250,350),(0,0,255),-1)  #to fill the colour, put border value as -1. 
+cv2.rectangle(img,(0,0),(250,350),(0,0,255),cv2.FILLED)  #to fill the colour, put border value as -1. or with cv2.FILLED.
+
+cv2.circle(img,(400,50),30,(255,255,0),-1)  #circle created, with centre defined and radius length is given along with color.
 
 cv2.imshow("image",img)
 cv2.waitKey(0)
