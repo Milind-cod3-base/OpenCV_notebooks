@@ -8,6 +8,9 @@ imghor = np.hstack((img,img))
 
 imgver = np.vstack((img,img))
 
+#but there are 2 flaws with this method that:
+#1.images cannot be resized
+#2. both images must have the same channel (like RGB) or it wont work. Because these are matrices.
 cv2.imshow('vertical lena',imgver)
 cv2.imshow('horizontal lena',imghor)
 cv2.waitKey(0)
