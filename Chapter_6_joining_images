@@ -42,7 +42,7 @@ def stackImages(scale, imgArray):
 img = cv2.imread('Resources/lena.png')
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-imgStack = stackImages(0.5, ([img, img, img], [img, img, img]))
+imgStack = stackImages(0.5, ([img, imgGray, img], [imgGray, img, imgGray]))
 
 cv2.imshow('Rescaled',imgStack)
 
