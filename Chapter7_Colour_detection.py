@@ -30,8 +30,15 @@ while True:
 
 #now we are goint to read these trackbar values so that we can apply on our image, hence we gettrackbar function to get the values
 
-    h_min = cv2.getTrackbarPos("Hue Min","TrackBars")    #first is which value we are talking about. then to which trackbar window doest it belong
-    print( h_min)
+    h_min = cv2.getTrackbarPos("Hue Min", "TrackBars")    #first is which value we are talking about. then to which trackbar window doest it belong
+    h_max = cv2.getTrackbarPos("Hue Max", "TrackBars")
+    s_min = cv2.getTrackbarPos("Sat Min", "TrackBars")
+    s_max = cv2.getTrackbarPos("Sat Max", "TrackBars")
+    v_min = cv2.getTrackbarPos("Val Min", "TrackBars")
+    v_max = cv2.getTrackbarPos("Val Max", "TrackBars")
+
+    print( h_min, h_max,s_min,s_max,v_min,v_max)
+
     cv2.imshow('lambo',imgResize)
     cv2.imshow('lamboHSV',imgHSV)
 
