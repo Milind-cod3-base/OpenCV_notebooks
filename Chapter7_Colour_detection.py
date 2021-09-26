@@ -45,7 +45,12 @@ while True:
     mask = cv2.inRange(imgHSV,lower,upper) #this will filter out and will give us the filtered out image of that color
     #after toggling with the mask - values of the range has been optimised.
 
+    imgResult = cv2.bitwise_and(imgResize,imgResize,mask=mask)     #bitwise_add takes two images and whatever the color common in them it says yes and stores that color into a new image
+   #our new image will be like original image but with a mask applied.
+    #here will recieve a coloured mask.
+
     cv2.imshow('lambo',imgResize)
     cv2.imshow('lamboHSV',imgHSV)
     cv2.imshow('Mask',mask)
+    cv2.imshow('Result',imgResult)
     cv2.waitKey(1)
