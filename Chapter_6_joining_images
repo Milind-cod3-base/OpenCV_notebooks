@@ -6,7 +6,7 @@ img = cv2.imread('Resources/lena.png')
 
 #need to create a function which can both scale and join pictures of different channels.
 
-def stackImages(scale, imgArray):
+def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
     cols = len(imgArray[0])
     rowsAvailable = isinstance(imgArray[0], list)
