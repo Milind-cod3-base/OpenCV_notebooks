@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+
 #now we need to define a color range (hsv range) so that if a color falls in image falls in that range, we can capture it.
 #but we donot know the minimum and maximum value we need for that particular color.
 #Hence we will introduce trackbars which will help us to play around values in real time so that we can find optimum maximum and minimum value of that color.
@@ -14,15 +15,15 @@ cv2.createTrackbar("Hue Min","TrackBars",0,179,empty)       #keep track of hue m
 #hue has maximum value of 360 but here we only have till 179 (180 values)
 #empty function is defined which will run everytime anything changes in trackbar.
 
-cv2.createTrackbar("Hue Max","TrackBars",179,179,empty)  #for maximum, set both value to max in all, here 179
-cv2.createTrackbar("Sat Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Hue Max","TrackBars",43,179,empty)  #for maximum, set both value to max in all, here 179
+cv2.createTrackbar("Sat Min","TrackBars",65,255,empty)
 cv2.createTrackbar("Sat Max","TrackBars",255,255,empty)   #sat and value goes upto 255 but hue here, goes till 179
-cv2.createTrackbar("Val Min","TrackBars",0,255,empty)
-cv2.createTrackbar("Val Max","TrackBars",255,255,empty)
+cv2.createTrackbar("Val Min","TrackBars",150,255,empty)
+cv2.createTrackbar("Val Max","TrackBars",255,255,empty)     #values are tweaked to perfection by toggling the parameters in trackbars
 
 while True:
     #I need to run this in a loop to get it as a video
-    img = cv2.imread('Resources/lamb.png')
+    img = cv2.imread('Resources/yes.jpg')
     imgResize = cv2.resize(img,(800,450))
     imgHSV = cv2.cvtColor(imgResize,cv2.COLOR_BGR2HSV) #cvt is used to change one format of colour to another.
 
@@ -39,7 +40,12 @@ while True:
 
     print( h_min, h_max,s_min,s_max,v_min,v_max)
 
+    lower = np.array([h_min,s_min,v_min])
+    upper = np.array([h_max,s_max,v_max])
+    mask = cv2.inRange(imgHSV,lower,upper) #this will filter out and will give us the filtered out image of that color
+    #after toggling with the mask - values of the range has been optimised.
+
     cv2.imshow('lambo',imgResize)
     cv2.imshow('lamboHSV',imgHSV)
-
+    cv2.imshow('Mask',mask)
     cv2.waitKey(1)
