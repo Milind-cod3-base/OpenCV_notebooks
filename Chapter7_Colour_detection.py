@@ -14,6 +14,12 @@ cv2.createTrackbar("Hue Min","TrackBars",0,179,empty)       #keep track of hue m
 #hue has maximum value of 360 but here we only have till 179 (180 values)
 #empty function is defined which will run everytime anything changes in trackbar.
 
+cv2.createTrackbar("Hue Max","TrackBars",179,179,empty)  #for maximum, set both value to max in all, here 179
+cv2.createTrackbar("Sat Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Sat Max","TrackBars",255,255,empty)   #sat and value goes upto 255 but hue here, goes till 179
+cv2.createTrackbar("Val Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Val Max","TrackBars",255,255,empty)
+
 
 img = cv2.imread('Resources/lamb.png')
 imgResize = cv2.resize(img,(800,450))
