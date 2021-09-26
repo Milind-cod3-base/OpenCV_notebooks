@@ -20,15 +20,19 @@ cv2.createTrackbar("Sat Max","TrackBars",255,255,empty)   #sat and value goes up
 cv2.createTrackbar("Val Min","TrackBars",0,255,empty)
 cv2.createTrackbar("Val Max","TrackBars",255,255,empty)
 
-
-img = cv2.imread('Resources/lamb.png')
-imgResize = cv2.resize(img,(800,450))
-
-imgHSV = cv2.cvtColor(imgResize,cv2.COLOR_BGR2HSV) #cvt is used to change one format of colour to another.
+while True:
+    #I need to run this in a loop to get it as a video
+    img = cv2.imread('Resources/lamb.png')
+    imgResize = cv2.resize(img,(800,450))
+    imgHSV = cv2.cvtColor(imgResize,cv2.COLOR_BGR2HSV) #cvt is used to change one format of colour to another.
 
 #HSV is hue saturation value. Where saturation, if high will show the bright color, and if low will show a dull, grayed color.
 
-cv2.imshow('lambo',imgResize)
-cv2.imshow('lamboHSV',imgHSV)
+#now we are goint to read these trackbar values so that we can apply on our image, hence we gettrackbar function to get the values
 
-cv2.waitKey(0)
+    h_min = cv2.getTrackbarPos("Hue Min","TrackBars")    #first is which value we are talking about. then to which trackbar window doest it belong
+    print( h_min)
+    cv2.imshow('lambo',imgResize)
+    cv2.imshow('lamboHSV',imgHSV)
+
+    cv2.waitKey(1)
