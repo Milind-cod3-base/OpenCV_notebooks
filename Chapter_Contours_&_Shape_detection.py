@@ -17,7 +17,7 @@ def getContours(img):    #defining a function
             print(peri)
             #approximate the number of corner points
             approx = cv2.approxPolyDP(cnt,0.02*peri,True)   #a contour is given and then the resolution,
-            print(approx)  #corner points calculated and displayed
+            print(len(approx))   #I just need the number of corner points and not the coordinates
 
 def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
