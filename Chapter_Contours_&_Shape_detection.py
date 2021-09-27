@@ -18,6 +18,12 @@ def getContours(img):    #defining a function
             #approximate the number of corner points
             approx = cv2.approxPolyDP(cnt,0.02*peri,True)   #a contour is given and then the resolution,
             print(len(approx))   #I just need the number of corner points and not the coordinates
+            #create object corners
+            objCor = len(approx)
+            #create a bounding box around detected object
+            x, y, w, h = cv2.boundingRect(approx)
+            #drawing the rectangle
+            cv2.rectangle(imgContour,(x,y),(x+w,y+h),(0,255,0),2)
 
 def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
