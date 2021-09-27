@@ -22,8 +22,17 @@ def getContours(img):    #defining a function
             objCor = len(approx)
             #create a bounding box around detected object
             x, y, w, h = cv2.boundingRect(approx)
-            #drawing the rectangle
+
+            #now detect the type of shape
+
+            if objCor ==3:objectType="Tri"
+            else:objectType="None"
+
+
+            #drawing the rectangle around objects
             cv2.rectangle(imgContour,(x,y),(x+w,y+h),(0,255,0),2)
+
+            cv2.putText(imgContour,objectType,(x+(w//2)-10, y+(h//2)-10),cv2.FONT_HERSHEY_COMPLEX, 0.8,(0,0,0),2)    #last is: where I wish to print
 
 def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
