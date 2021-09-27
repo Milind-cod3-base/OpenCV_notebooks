@@ -7,8 +7,17 @@ def getContours(img):    #defining a function
     for cnt in contours:
         area = cv2.contourArea(cnt)    #gets the area of those contours
         print(area)
-        cv2.drawContours(imgContour,cnt,-1,(255,0,0),3)    #it draws it out, but I wish to use it on copied image #first the image we need, then the contour, then index -1 because I need all the contours  #gave it blue color and gave the thickness as 3
 
+        #now I need to give minimum threshold area so that it doesnt detect any noise
+        if area>500:
+            cv2.drawContours(imgContour, cnt, -1, (255, 0, 0),3)  # it draws it out, but I wish to use it on copied image #first the image we need, then the contour, then index -1 because I need all the contours  #gave it blue color and gave the thickness as 3
+            #as my shapes already had area > 500 it didnt create any issues.
+            #now lets calculate the curve length
+            peri = cv2.arcLength(cnt,True)   #True as contours is closed
+            print(peri)
+            #approximate the number of corner points
+            approx = cv2.approxPolyDP(cnt,0.02*peri,True)   #a contour is given and then the resolution,
+            print(approx)  #corner points calculated and displayed
 
 def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
