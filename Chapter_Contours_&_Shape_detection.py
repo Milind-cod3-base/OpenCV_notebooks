@@ -1,6 +1,15 @@
 import cv2
 import numpy as np
 
+def getContours(img):    #defining a function
+    contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)      #image and retrievel method, we are using external method. RETR_EXTERNAL retrieves the extreme outer contours #next we have approximations: where we can request either all info or we can get compressed value, hence reduced value. Here I am asking for all values.
+    #contours will be saved in contours
+    for cnt in contours:
+        area = cv2.contourArea(cnt)    #gets the area of those contours
+        print(area)
+        cv2.drawContours(imgContour,cnt,-1,(255,0,0),3)    #it draws it out, but I wish to use it on copied image #first the image we need, then the contour, then index -1 because I need all the contours  #gave it blue color and gave the thickness as 3
+
+
 def stackImages(scale, imgArray):    #stacking function
     rows = len(imgArray)
     cols = len(imgArray[0])
@@ -38,13 +47,16 @@ img = cv2.imread('Resources/shapes.jpg')
 
 #First the pre processing will be done by converting the image into grayscale and the corners will be found.
 
+imgContour = img.copy()    #created a copy to be used inside the function.
 imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)   #kernel size set to 7,7 and blurring is done to smooth out the image, while the value of sigma is set 1.
 
 imgCan = cv2.Canny(imgBlur,50,50)   #edges are marked.
+getContours(imgCan)
+
 imgblank = np.zeros_like(img)
 
-imgStack = stackImages(0.5,([img,imgGray,imgBlur],[imgCan,imgblank,imgblank]))
+imgStack = stackImages(0.5,([img,imgGray,imgBlur],[imgCan,imgContour,imgblank]))
 
 cv2.imshow('Stacked Images', imgStack)
 cv2.waitKey(0)
