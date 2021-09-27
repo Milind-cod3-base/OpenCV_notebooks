@@ -26,6 +26,11 @@ def getContours(img):    #defining a function
             #now detect the type of shape
 
             if objCor ==3:objectType="Tri"
+            elif objCor ==4:
+                aspRatio = w/float(h)    #finding if its a square or rectangle
+                if aspRatio >0.55 and aspRatio <1.5:objectType="Square"   #giving a deviation to fit in square
+                else:objectType="Rectangle"
+            elif objCor>4: objectType= "Circle"
             else:objectType="None"
 
 
