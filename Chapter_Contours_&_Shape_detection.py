@@ -41,9 +41,10 @@ img = cv2.imread('Resources/shapes.jpg')
 imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)   #kernel size set to 7,7 and blurring is done to smooth out the image, while the value of sigma is set 1.
 
-imgStack = stackImages(0.6,([img,imgGray,imgBlur]))
-#cv2.imshow('Original', img)
-#cv2.imshow('Gray', imgGray)
-#cv2.imshow('Blur',imgBlur)
+imgCan = cv2.Canny(imgBlur,50,50)   #edges are marked.
+imgblank = np.zeros_like(img)
+
+imgStack = stackImages(0.5,([img,imgGray,imgBlur],[imgCan,imgblank,imgblank]))
+
 cv2.imshow('Stacked Images', imgStack)
 cv2.waitKey(0)
