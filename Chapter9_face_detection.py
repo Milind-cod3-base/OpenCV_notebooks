@@ -1,8 +1,6 @@
 
-
-
 #to detect faces we are going to use a method proposed by viola and jones
-#positive = faces, negative = not faces --> then we will train and find a file which will have face
+#positive = faces, negative = not faces --> then we will train and find a cascade file which will have face
 #many algorithms are more accurate than Haar cascades (HOG + Linear SVM, SSDs, Faster R-CNN, YOLO, to name a few), but they are still relevant and useful today.
 
 #One of the primary benefits of Haar cascades is that they are just so fast — it’s hard to beat their speed.
